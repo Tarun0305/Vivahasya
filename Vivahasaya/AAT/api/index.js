@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
-const { saveInquiry, getAllInquiries, getInquiryById, updateInquiryStatus } = require('./database');
+const { saveInquiry, getAllInquiries, getInquiryById, updateInquiryStatus } = require('../database');
 
 const app = express();
 const PORT = 3000;
@@ -12,15 +12,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Serve static files
-app.use(express.static(__dirname));
-
 // Routes
-
-// Serve the main HTML file
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
 
 // API endpoint to save inquiry
 app.post('/api/inquiry', (req, res) => {
@@ -138,15 +130,3 @@ app.use((err, req, res, next) => {
 
 // Export the app for Vercel
 module.exports = app;
-
-// Start server if not in Vercel environment
-if (require.main === module) {
-    app.listen(PORT, () => {
-        console.log(`
-╔════════════════════════════════════════╗
-║   Vivahasya Wedding Planner Server     ║
-║   Running on http://localhost:${PORT}   ║
-╚════════════════════════════════════════╝
-        `);
-    });
-}
