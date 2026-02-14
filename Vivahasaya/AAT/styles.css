@@ -1,0 +1,426 @@
+:root {
+    --font-primary: 'Outfit', sans-serif;
+    --font-heading: 'Playfair Display', serif;
+    /* Royal Wedding Feel */
+    /* Indian Wedding Palette: Orange, Gold, Deep Red */
+    --primary-gradient: linear-gradient(135deg, #ff9933, #ff5733);
+    --accent-gold: #ffd700;
+    --bg-light: #fffcf5;
+    /* Warm Cream */
+    --text-light: #333;
+    --bg-dark: #2a0a0a;
+    /* Deep Red/Brown for dark mode */
+    --text-dark: #f8f9fa;
+}
+body {
+    font-family: var(--font-primary);
+    scroll-behavior: smooth;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navbar-brand {
+    font-family: var(--font-heading);
+}
+/* Glassmorphism Navbar */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+[data-bs-theme="dark"] body {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+}
+[data-bs-theme="dark"] .glass-effect {
+    background: rgba(42, 10, 10, 0.7);
+    /* Dark Red tint */
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+    /* Subtle Gold border */
+}
+[data-bs-theme="light"] body {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+}
+[data-bs-theme="light"] .glass-effect {
+    background: rgba(255, 252, 245, 0.85);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.section-padding {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+/* Navbar Links */
+.nav-link {
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+    font-family: var(--font-primary);
+    letter-spacing: 0.5px;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 5px;
+    left: 50%;
+    background: var(--primary-gradient);
+    transition: width 0.3s ease, left 0.3s ease;
+    border-radius: 2px;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+    left: 0;
+}
+/* Typography Gradient */
+.text-primary-gradient {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+/* Card Hover */
+.card {
+    transition: transform 0.3s ease;
+    border: none;
+    overflow: hidden;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+/* Carousel Styling */
+.carousel-item img {
+    height: 100vh;
+    object-fit: cover;
+    filter: brightness(0.7);
+    /* Darken slightly for text readability */
+}
+.carousel-caption {
+    bottom: 30%;
+}
+.carousel-caption h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Dark-mode carousel improvements for better readability */
+[data-bs-theme="dark"] .carousel-item img {
+    /* Dim background images more in dark mode so captions stand out */
+    filter: brightness(0.45) contrast(1.05);
+}
+[data-bs-theme="dark"] .carousel-caption {
+    background: rgba(0, 0, 0, 0.35);
+    padding: 1.25rem 1.5rem;
+    border-radius: 0.75rem;
+    max-width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+[data-bs-theme="dark"] .carousel-caption h1,
+[data-bs-theme="dark"] .carousel-caption p,
+[data-bs-theme="dark"] .carousel-caption .btn {
+    color: #ffffff;
+}
+[data-bs-theme="dark"] .carousel-caption h1 {
+    text-shadow: 0 6px 18px rgba(0, 0, 0, 0.75);
+}
+[data-bs-theme="dark"] .carousel-caption .btn {
+    background: linear-gradient(135deg, #ff9933, #ff5733);
+    border: none;
+    color: #fff;
+}
+/* Form Controls */
+.form-control {
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+[data-bs-theme="dark"] .form-control {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+.form-control:focus {
+    box-shadow: 0 0 0 3px rgba(255, 153, 51, 0.25);
+    /* Orange focus */
+    border-color: #ff9933;
+}
+/* Buttons */
+.btn-primary {
+    background: var(--primary-gradient);
+    border: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+.btn-primary:hover {
+    background: linear-gradient(135deg, #e67e22, #d35400);
+}
+html {
+    scroll-padding-top: 80px;
+    /* Offset for fixed navbar */
+}
+/* Footer Hover Effects */
+.icon-hover {
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+.icon-hover:hover {
+    transform: translateY(-3px) scale(1.1);
+    color: var(--accent-gold) !important;
+}
+.hover-white {
+.hover-white:hover {
+    color: white !important;
+    padding-left: 5px;
+}
+
+/* Carousel Interactivity */
+.carousel-control-prev, .carousel-control-next {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+.carousel-control-prev:hover, .carousel-control-next:hover {
+    opacity: 1;
+}
+#ourWorkCarousel .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    border: none;
+    background: var(--bg-light);
+}
+[data-bs-theme="dark"] #ourWorkCarousel .card {
+    background: var(--bg-dark);
+    color: var(--text-dark);
+}
+#ourWorkCarousel .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+#ourWorkCarousel .card-img-top {
+    transition: transform 0.3s ease;
+}
+#ourWorkCarousel .card:hover .card-img-top {
+    transform: scale(1.1);
+}
+
+/* Utility Classes */
+.bg-primary-gradient {
+    background: var(--primary-gradient);
+}
+.btn-primary-gradient {
+    background: var(--primary-gradient);
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+.btn-primary-gradient:hover {
+    background: linear-gradient(135deg, #e63946, #ff4500);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 105, 0, 0.3);
+}
+.text-primary-gradient {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+/* Why Choose Us Interactivity */
+.feature-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    background: var(--bg-light);
+    border: 2px solid transparent !important;
+}
+[data-bs-theme="dark"] .feature-card {
+    background: var(--bg-dark);
+}
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border-color: var(--primary-gradient) !important;
+}
+.feature-icon {
+    transition: transform 0.3s ease;
+}
+.feature-card:hover .feature-icon {
+    transform: scale(1.1);
+}
+.feature-card:hover .feature-icon i {
+    color: var(--accent-gold) !important;
+}
+
+/* Testimonials Interactivity */
+.testimonial-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: var(--bg-light);
+    border-radius: 15px;
+}
+[data-bs-theme="dark"] .testimonial-card {
+    background: var(--bg-dark);
+}
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+.testimonial-img {
+    transition: transform 0.3s ease;
+}
+.testimonial-card:hover .testimonial-img {
+    transform: scale(1.1);
+}
+.quote-icon {
+    transition: transform 0.3s ease;
+}
+.testimonial-card:hover .quote-icon {
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* Album Cards */
+.album-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: var(--bg-light);
+    border-radius: 15px;
+    cursor: pointer;
+}
+[data-bs-theme="dark"] .album-card {
+    background: var(--bg-dark);
+}
+.album-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+.album-img {
+    transition: transform 0.3s ease;
+}
+.album-card:hover .album-img {
+    transform: scale(1.05);
+}
+
+/* About Section Enhancements */
+.about-stat {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: var(--bg-light);
+}
+[data-bs-theme="dark"] .about-stat {
+    background: var(--bg-dark);
+}
+.about-stat:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--primary-gradient);
+}
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+}
+.timeline-marker {
+    position: absolute;
+    left: -22px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    background: var(--primary-gradient);
+    border-radius: 50%;
+    border: 3px solid var(--bg-light);
+}
+[data-bs-theme="dark"] .timeline-marker {
+    border-color: var(--bg-dark);
+}
+.timeline-content {
+    background: var(--bg-light);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+[data-bs-theme="dark"] .timeline-content {
+    background: var(--bg-dark);
+}
+.timeline-content:hover {
+    transform: translateX(10px);
+}
+
+/* Timeline Styles */
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--primary-gradient);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -22px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    background: var(--primary-gradient);
+    border-radius: 50%;
+    border: 3px solid var(--bg-light);
+}
+[data-bs-theme="dark"] .timeline-marker {
+    border-color: var(--bg-dark);
+}
+
+.timeline-content {
+    background: var(--bg-light);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+[data-bs-theme="dark"] .timeline-content {
+    background: var(--bg-dark);
+}
+
+.timeline-content:hover {
+    transform: translateX(10px);
+}
+
+.timeline-content h5 {
+    color: var(--primary-gradient);
+    margin-bottom: 10px;
+}
+
+/* Counter Animation */
+.counter {
+    font-size: 2.5rem;
+    transition: color 0.3s ease;
+}
+
+.counter:hover {
+    color: var(--secondary-color) !important;
+}
+}
