@@ -136,12 +136,17 @@ app.use((err, req, res, next) => {
     });
 });
 
-// Start server
-app.listen(PORT, () => {
-    console.log(`
+// Export the app for Vercel
+module.exports = app;
+
+// Start server if not in Vercel environment
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`
 ╔════════════════════════════════════════╗
 ║   Vivahasya Wedding Planner Server     ║
 ║   Running on http://localhost:${PORT}   ║
 ╚════════════════════════════════════════╝
-    `);
-});
+        `);
+    });
+}

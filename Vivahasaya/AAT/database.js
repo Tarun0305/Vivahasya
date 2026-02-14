@@ -2,7 +2,11 @@ const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
 // Create/open database
-const db = new sqlite3.Database(path.join(__dirname, 'inquiries.db'), (err) => {
+const DB_PATH = process.env.VERCEL 
+    ? path.join('/tmp', 'inquiries.db') 
+    : path.join(__dirname, 'inquiries.db');
+
+const db = new sqlite3.Database(DB_PATH, (err) => {
     if (err) {
         console.error('Error opening database:', err);
     } else {
